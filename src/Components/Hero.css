@@ -1,0 +1,418 @@
+/* =========================================
+   HERO SECTION - ZIP-TECH PORTFOLIO
+   Full-width dark animated hero
+========================================= */
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 140px 6% 80px;
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+
+  background: #050816;
+  color: #ffffff;
+
+  /* Base font for the whole section */
+  font-family: "Montserrat", system-ui, -apple-system, sans-serif;
+  font-weight: 500;
+
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+/* =========================================
+   BACKGROUND LAYERS
+========================================= */
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Glowing orbs */
+.hero__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.35;
+  animation: orbFloat 12s ease-in-out infinite alternate;
+}
+
+.orb-1 {
+  width: 450px;
+  height: 450px;
+  background: #4f46e5;
+  top: -150px;
+  left: -100px;
+}
+
+.orb-2 {
+  width: 400px;
+  height: 400px;
+  background: #0891b2;
+  bottom: -150px;
+  right: 10%;
+  animation-delay: -4s;
+}
+
+.orb-3 {
+  width: 300px;
+  height: 300px;
+  background: #7c3aed;
+  top: 30%;
+  right: -100px;
+  animation-delay: -7s;
+}
+
+@keyframes orbFloat {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(40px, -30px) scale(1.15); }
+  100% { transform: translate(-30px, 40px) scale(0.9); }
+}
+
+/* =========================================
+   ANIMATED GRID
+========================================= */
+
+.hero__grid {
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+
+  background-size: 55px 55px;
+
+  transform: perspective(600px) rotateX(55deg);
+  transform-origin: center;
+  animation: gridMove 25s linear infinite;
+
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+}
+
+@keyframes gridMove {
+  from { background-position: 0 0; }
+  to   { background-position: 0 550px; }
+}
+
+/* =========================================
+   NOISE TEXTURE
+========================================= */
+
+.hero__noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  pointer-events: none;
+
+  background-image: url(
+    "data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E"
+  );
+}
+
+/* =========================================
+   MAIN CONTENT
+========================================= */
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 70px;
+}
+
+/* =========================================
+   LEFT TEXT AREA
+========================================= */
+
+.hero__text {
+  flex: 1;
+  max-width: 720px;
+}
+
+/* Greeting — Share Tech Mono */
+.hero__greeting {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 18px;
+  margin: 10px;
+
+  font-family: "Share Tech Mono", "Courier New", monospace;
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+
+  color: #67e8f9;
+
+  background: rgba(6, 182, 212, 0.08);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  border-radius: 50px;
+
+  backdrop-filter: blur(10px);
+}
+
+/* Main heading — Orbitron */
+.hero__title {
+  font-family: "Orbitron", "Montserrat", sans-serif;
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  line-height: 1.12;
+  font-weight: 800;
+  letter-spacing: -1px; /* Orbitron is wider — reduce tracking */
+
+  margin: 0 0 28px;
+
+  color: #f8fafc;
+}
+
+/* Gradient text */
+.hero__title--gradient {
+  background: linear-gradient(
+    110deg,
+    #22d3ee 0%,
+    #818cf8 45%,
+    #c084fc 100%
+  );
+
+  background-size: 200% auto;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: gradientMove 5s ease infinite;
+}
+
+@keyframes gradientMove {
+  0%   { background-position: 0% center; }
+  50%  { background-position: 100% center; }
+  100% { background-position: 0% center; }
+}
+
+/* Description — Montserrat */
+.hero__description {
+  max-width: 600px;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  font-weight: 500;
+
+  color: #94a3b8;
+
+  margin: 0 0 32px;
+}
+
+/* =========================================
+   META INFORMATION
+========================================= */
+
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 25px;
+}
+
+.hero__meta span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+
+  color: #cbd5e1;
+}
+
+.hero__meta i {
+  color: #22d3ee;
+  font-size: 1rem;
+}
+
+/* =========================================
+   RIGHT IMAGE AREA
+========================================= */
+
+.hero__image-wrapper {
+  flex: 0 0 400px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+}
+
+.hero__image-ring {
+  position: relative;
+
+  width: 500px;
+  height: 500px;
+
+  padding: 7px;
+  border-radius: 50%;
+
+  background: linear-gradient(135deg, #06b6d4, #6366f1, #a855f7);
+
+  animation: imageFloat 6s ease-in-out infinite;
+
+  box-shadow:
+    0 0 30px rgba(6, 182, 212, 0.2),
+    0 0 80px rgba(99, 102, 241, 0.15);
+}
+
+.hero__image-glow {
+  position: absolute;
+  inset: -25px;
+
+  border-radius: 50%;
+  background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+
+  filter: blur(65px);
+  opacity: 0.35;
+
+  z-index: -1;
+}
+
+.hero__image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  border-radius: 50%;
+  border: 5px solid #050816;
+
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes imageFloat {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-18px); }
+  100% { transform: translateY(0); }
+}
+
+/* =========================================
+   TABLET RESPONSIVE
+========================================= */
+
+@media (max-width: 1024px) {
+  .hero { padding: 130px 5% 70px; }
+  .hero__content { gap: 35px; }
+  .hero__image-wrapper { flex: 0 0 300px; }
+  .hero__image-ring { width: 280px; height: 280px; }
+  .hero__title { font-size: clamp(2.4rem, 4.8vw, 3.8rem); }
+  .hero__description { font-size: 1rem; }
+}
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding: 120px 6% 80px;
+  }
+
+  .hero__content {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 45px;
+  }
+
+  .hero__text { max-width: 100%; }
+  .hero__greeting { margin-bottom: 22px; }
+
+  .hero__title {
+    font-size: clamp(2.2rem, 8vw, 3.6rem);
+    letter-spacing: -0.5px;
+  }
+
+  .hero__description {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1rem;
+  }
+
+  .hero__meta { justify-content: center; gap: 18px; }
+  .hero__image-wrapper { flex: none; }
+  .hero__image-ring { width: 240px; height: 240px; }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+  .hero { padding: 110px 5% 60px; }
+
+  .hero__title {
+    font-size: 2.2rem;
+    letter-spacing: -0.5px;
+  }
+
+  .hero__description {
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  .hero__image-ring { width: 200px; height: 200px; }
+
+  .hero__meta {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .hero__orb { filter: blur(75px); }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero *,
+  .hero *::before,
+  .hero *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

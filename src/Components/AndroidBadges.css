@@ -1,0 +1,348 @@
+
+/* ===== MAIN SECTION ===== */
+
+.android-badges-section {
+  width: 100%;
+  padding: 60px 0;
+  box-sizing: border-box;
+  background: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ===== HEADER ===== */
+
+.android-badges-header {
+  text-align: center;
+  margin-bottom: 35px;
+  padding: 0 16px;
+}
+
+.android-badges-subtitle {
+  display: inline-block;
+  color: #142b3b;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.android-badges-header h2 {
+  color: #1b2733;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.1rem;
+  font-weight: 800;
+  margin: 0 0 15px;
+  letter-spacing: 1px;
+}
+
+.android-badges-header p {
+  color: #64717e;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 650px;
+  margin: auto;
+}
+
+/* ===== BADGE CONTAINER ===== */
+
+.android-badges-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 25px;
+
+  width: 70%;
+  box-sizing: border-box;
+  padding: 0 16px;
+
+  margin: 0 auto;
+}
+
+/* ===== BADGE CARD ===== */
+
+.android-badge-card {
+  flex: 0 1 calc(25% - 19px);
+  min-width: 150px;
+  max-width: 220px;
+  box-sizing: border-box;
+
+  background: #f8fafc;
+  border: 1px solid #e5e9ed;
+  border-radius: 14px;
+  padding: 20px 15px;
+
+  text-align: center;
+  cursor: pointer;
+
+  box-shadow: 0 4px 15px rgba(27, 39, 51, 0.06);
+  transition: all 0.3s ease;
+}
+
+.android-badge-card:hover {
+  transform: translateY(-6px);
+  border-color: #00a6c7;
+  box-shadow: 0 10px 25px rgba(27, 39, 51, 0.12);
+}
+
+.android-badge-card:focus-visible {
+  outline: 2px solid #00a6c7;
+  outline-offset: 4px;
+}
+
+/* ===== BADGE IMAGE ===== */
+
+.android-badge-image {
+  width: 100%;
+  height: 145px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 15px;
+}
+
+.android-badge-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.android-badge-card:hover .android-badge-image img {
+  transform: scale(1.07);
+}
+
+/* ===== BADGE DETAILS ===== */
+
+.android-badge-details h3 {
+  color: #1b2733;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 5px 0 7px;
+}
+
+.android-badge-details span {
+  color: #64717e;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* ===== VIEW BADGE TEXT ===== */
+
+.android-badge-view {
+  color: #142b3b;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 13px;
+  transition: color 0.3s ease;
+}
+
+.android-badge-card:hover .android-badge-view {
+  color: #00a6c7;
+}
+
+/* ===== VIEW MORE / SHOW LESS ===== */
+
+.android-badges-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+}
+
+.android-badges-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #1b2733;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.android-badges-toggle:hover {
+  color: #00a6c7;
+}
+
+.android-badges-toggle:focus-visible {
+  outline: 2px solid #00a6c7;
+  outline-offset: 5px;
+  border-radius: 3px;
+}
+
+.android-badges-arrow {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.android-badges-toggle:hover .android-badges-arrow {
+  transform: translateX(5px);
+}
+
+/* ===== BADGE PREVIEW MODAL ===== */
+
+.android-badge-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+  background: rgba(27, 39, 51, 0.8);
+}
+
+.android-badge-modal-content {
+  position: relative;
+
+  width: 100%;
+  max-width: 420px;
+
+  padding: 35px;
+  box-sizing: border-box;
+
+  background: #ffffff;
+  border-radius: 18px;
+  text-align: center;
+
+  animation: badgeModalIn 0.25s ease;
+}
+
+.android-badge-modal-content img {
+  width: 100%;
+  max-height: 260px;
+  object-fit: contain;
+}
+
+.android-badge-modal-content h3 {
+  color: #1b2733;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  line-height: 1.5;
+  margin: 20px 0 10px;
+}
+
+.android-badge-modal-content p {
+  color: #64717e;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.android-badge-modal-content a {
+  display: inline-block;
+  margin-top: 15px;
+
+  color: #00a6c7;
+  font-family: 'Share Tech Mono', monospace;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.android-badge-modal-content a:hover {
+  text-decoration: underline;
+}
+
+.android-badge-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+
+  background: none;
+  border: none;
+
+  color: #1b2733;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* ===== MODAL ANIMATION ===== */
+
+@keyframes badgeModalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===== TABLETS ===== */
+
+@media (max-width: 900px) {
+  .android-badges-grid {
+    width: 85%;
+  }
+
+  .android-badge-card {
+    flex-basis: calc(33.333% - 17px);
+  }
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 600px) {
+  .android-badges-section {
+    padding: 45px 0;
+  }
+
+  .android-badges-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .android-badges-grid {
+    width: 95%;
+    gap: 15px;
+  }
+
+  .android-badge-card {
+    flex-basis: calc(50% - 8px);
+    min-width: 0;
+    padding: 13px 10px;
+  }
+
+  .android-badge-image {
+    height: 110px;
+  }
+
+  .android-badge-details h3 {
+    font-size: 0.82rem;
+  }
+}
+
+/* ===== SMALL SCREENS ===== */
+
+@media (max-width: 400px) {
+  .android-badges-grid {
+    width: 95%;
+  }
+
+  .android-badges-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .android-badge-image {
+    height: 95px;
+  }
+
+  .android-badge-card {
+    padding: 12px 8px;
+  }
+}
