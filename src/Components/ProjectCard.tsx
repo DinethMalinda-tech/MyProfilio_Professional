@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./ProjectCard.css";
+import useScrollReveal from "../hooks/useScrollReveal";
 
 interface ProjectCardProps {
   img: string;
@@ -10,6 +11,7 @@ interface ProjectCardProps {
 
 function ProjectCard({ img, name, description, link }: ProjectCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const revealRef = useScrollReveal<HTMLElement>();
 
   useEffect(() => {
     if (!isExpanded) return;
@@ -24,7 +26,10 @@ function ProjectCard({ img, name, description, link }: ProjectCardProps) {
 
   return (
     <>
-      <article className="project-card">
+      <article
+        ref={revealRef}
+        className="project-card scroll-reveal"
+      >
       <button
         className="project-card__toggle"
         type="button"

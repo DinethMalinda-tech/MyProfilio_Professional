@@ -1,11 +1,41 @@
 
 import { useState } from "react";
 import "./CertificateCard.css";
+import useScrollReveal from "../hooks/useScrollReveal";
 
 interface GalleryItem {
   title: string;
   description: string;
   imgSrc: string;
+}
+
+interface CertificateGalleryCardProps {
+  item: GalleryItem;
+  onSelect: (item: GalleryItem) => void;
+}
+
+function CertificateGalleryCard({
+  item,
+  onSelect,
+}: CertificateGalleryCardProps) {
+  const revealRef = useScrollReveal<HTMLDivElement>();
+
+  return (
+    <div
+      ref={revealRef}
+      className="certificate-card scroll-reveal"
+      onClick={() => onSelect(item)}
+    >
+      <div className="img-wrapper">
+        <img src={item.imgSrc} alt={item.title} loading="lazy" />
+      </div>
+
+      <div className="card-content">
+        <h3 className="card-title">{item.title}</h3>
+        <p className="card-desc">{item.description}</p>
+      </div>
+    </div>
+  );
 }
 
 function CertificateCard() {
@@ -44,12 +74,16 @@ function CertificateCard() {
 
   const [selectedItem, setSelectedItem] =
     useState<GalleryItem | null>(null);
+  const headerRevealRef = useScrollReveal<HTMLDivElement>();
 
   return (
     <section className="qualifications-section">
 
       {/* SECTION HEADER */}
-      <div className="certificates-header">
+      <div
+        ref={headerRevealRef}
+        className="certificates-header scroll-reveal"
+      >
         <h2>UOM Open Flatform</h2>
 
         <p>
@@ -60,30 +94,12 @@ function CertificateCard() {
 
       {/* CERTIFICATE GALLERY */}
       <div className="gallery">
-        {galleryItems.map((item, index) => (
-          <div
-            className="certificate-card"
-            key={index}
-            onClick={() => setSelectedItem(item)}
-          >
-            <div className="img-wrapper">
-              <img
-                src={item.imgSrc}
-                alt={item.title}
-                loading="lazy"
-              />
-            </div>
-
-            <div className="card-content">
-              <h3 className="card-title">
-                {item.title}
-              </h3>
-
-              <p className="card-desc">
-                {item.description}
-              </p>
-            </div>
-          </div>
+        {galleryItems.map((item) => (
+          <CertificateGalleryCard
+            item={item}
+            onSelect={setSelectedItem}
+            key={item.title}
+          />
         ))}
       </div>
 

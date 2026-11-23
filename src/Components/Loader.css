@@ -1,0 +1,90 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #050816;
+  color: #ffffff;
+  font-family: "Montserrat", system-ui, sans-serif;
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+.loader--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: min(90%, 900px);
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.loader-title {
+  margin: 0;
+  color: #f8fafc;
+  font-family: "Orbitron", "Montserrat", sans-serif;
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.loader-bar {
+  position: relative;
+  width: min(220px, 60vw);
+  height: 3px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: rgba(34, 211, 238, 0.15);
+}
+
+.loader-bar-fill {
+  position: absolute;
+  top: 0;
+  left: -40%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #22d3ee, #818cf8, #c084fc, transparent);
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.6);
+  animation: loaderSweep 1.4s ease-in-out infinite;
+}
+
+@keyframes loaderSweep {
+  from { left: -40%; }
+  to { left: 100%; }
+}
+
+.loader-text {
+  color: #94a3b8;
+  font-family: "Share Tech Mono", "Courier New", monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  animation: loaderFade 1.6s ease-in-out infinite;
+}
+
+@keyframes loaderFade {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader,
+  .loader-bar-fill,
+  .loader-text,
+  .loader .hero__orb,
+  .loader .hero__grid,
+  .loader .hero__title--gradient {
+    animation: none;
+    transition: none;
+  }
+}

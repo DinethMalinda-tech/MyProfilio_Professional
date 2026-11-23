@@ -56,7 +56,10 @@ const Footer = () => {
         <nav className="footer-nav" aria-label="Footer navigation">
           <h3 className="footer-heading">Explore</h3>
           <ul className="footer-links">
-            <li><a href="#about">About</a></li>
+              <li><a href="#about">About</a></li>
+            <li><a href="#Services">Services</a></li>
+            <li><a href="#Skills">Skills</a></li>
+            <li><a href="#Qualifications">Qualifications</a></li>
             <li><a href="#Projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>

@@ -7,25 +7,27 @@ import CertificateCard from "./Components/CertificateCard"
 import AndroidBadges from "./Components/AndroidBadges"
 import ProjectSection from "./Components/ProjectSection"
 import Footer from "./Components/Footer"
+import Loader from "./Components/Loader"
 
 
 function App() {
   return (
     <div>
-      <Navibar/>
-      <HeroSection/>
-      <SectionTitle title="Services" />
-      <Services/>
-      <SectionTitle title="Skills"/>
-      <SkillsSection/>
-      <SectionTitle title="My Qualifications"/>
-      <CertificateCard/>
-      <AndroidBadges/>
-      <SectionTitle title="My Projects" id="Projects"/>
-      <ProjectSection/>
-      <SectionTitle title="Contact Me" id="contact"/>
-      <Footer/>
-      
+      <Loader />
+      <Navibar />
+      <HeroSection />
+      <SectionTitle title="Services" id="Services" />
+      <Services />
+      <SectionTitle title="Skills" id="Skills" />
+      <SkillsSection />
+      <SectionTitle title="My Qualifications" id="Qualifications" />
+      <CertificateCard />
+      <AndroidBadges />
+      <SectionTitle title="My Projects" id="Projects" />
+      <ProjectSection />
+      <SectionTitle title="Contact Me" id="contact" />
+      <Footer />
+
     </div>
   )
 }

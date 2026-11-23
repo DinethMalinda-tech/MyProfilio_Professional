@@ -1,4 +1,5 @@
 import "./ToolCard.css";
+import useScrollReveal from "../hooks/useScrollReveal";
 
 interface Skill {
   name: string;
@@ -13,6 +14,8 @@ interface ToolCardProps {
 }
 
 function ToolCard({ title = "💻 Tools", skills, height, width }: ToolCardProps) {
+  const revealRef = useScrollReveal<HTMLDivElement>();
+
   // Only apply inline sizes if the caller really asks for them
   const style: React.CSSProperties = {};
   if (height) style.height = height;
@@ -22,7 +25,11 @@ function ToolCard({ title = "💻 Tools", skills, height, width }: ToolCardProps
   }
 
   return (
-    <div className="tool-card" style={style}>
+    <div
+      ref={revealRef}
+      className="tool-card scroll-reveal"
+      style={style}
+    >
       <h2>{title}</h2>
 
       <div className="tool-card__skills">

@@ -1,4 +1,5 @@
 import "./ServiceCard.css";
+import useScrollReveal from "../hooks/useScrollReveal";
 
 interface ServiceCardProps {
   title: string;
@@ -8,8 +9,13 @@ interface ServiceCardProps {
 }
 
 function ServiceCard({ title, description, icon, }: ServiceCardProps) {
+  const revealRef = useScrollReveal<HTMLDivElement>();
+
   return (
-    <div className="service-card">
+    <div
+      ref={revealRef}
+      className="service-card scroll-reveal"
+    >
       <div className="service-card__icon">
         <img src={icon} alt={`${title} icon`} />
       </div>

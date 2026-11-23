@@ -1,8 +1,21 @@
-import "./Hero.css"
+
+import "./Hero.css";
+import { buildWhatsAppLink } from "../utils/whatsapp";
+import useScrollReveal from "../hooks/useScrollReveal";
 
 function HeroSection() {
+  const revealRef = useScrollReveal<HTMLElement>();
+
+  const whatsappLink: string = buildWhatsAppLink(
+    "Hi Dineth, I visited your portfolio and would like to discuss a project opportunity."
+  );
+
   return (
-    <section id="about" className="hero">
+    <section
+      id="about"
+      ref={revealRef}
+      className="hero scroll-reveal"
+    >
 
       {/* Animated background layers */}
       <div className="hero__bg">
@@ -18,6 +31,7 @@ function HeroSection() {
 
         {/* Left text area */}
         <div className="hero__text">
+
           <span className="hero__greeting">
             ✦ Full-stack developer
           </span>
@@ -41,24 +55,39 @@ function HeroSection() {
             complex problems into elegant solutions.
           </p>
 
-          <div className="hero__meta">
-            <span>
-              <i className="fas fa-code"></i> Full-stack
-            </span>
+          {/* CALL TO ACTION BUTTONS */}
+          <div className="hero__actions">
 
-            <span>
-              <i className="fas fa-rocket"></i> Problem solver
-            </span>
+            {/* Hire Me — WhatsApp */}
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hero__btn hero__btn--primary"
+            >
+              <i className="fas fa-briefcase"></i>
+              <span>Hire Me</span>
+              <i className="fas fa-arrow-right hero__btn-arrow"></i>
+            </a>
 
-            <span>
-              <i className="fas fa-globe"></i> Tech enthusiast
-            </span>
+            {/* Contact Me — In-page navigation */}
+            <a
+              href="#contact"
+              className="hero__btn hero__btn--secondary"
+            >
+              <i className="fas fa-comment-dots"></i>
+              <span>Contact Me</span>
+            </a>
+
           </div>
+
         </div>
 
         {/* Right image */}
         <div className="hero__image-wrapper">
+
           <div className="hero__image-ring">
+
             <div className="hero__image-glow"></div>
 
             <img
@@ -67,10 +96,13 @@ function HeroSection() {
               alt="Developer portrait"
               loading="lazy"
             />
+
           </div>
+
         </div>
 
       </div>
+
     </section>
   );
 }

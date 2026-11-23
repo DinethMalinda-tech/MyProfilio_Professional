@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import "./AndroidBadges.css";
+import useScrollReveal from "../hooks/useScrollReveal";
 
 interface Badge {
   id: number;
@@ -10,9 +11,47 @@ interface Badge {
   link?: string;
 }
 
+interface AndroidBadgeCardProps {
+  badge: Badge;
+  onSelect: (badge: Badge) => void;
+}
+
+function AndroidBadgeCard({ badge, onSelect }: AndroidBadgeCardProps) {
+  const revealRef = useScrollReveal<HTMLDivElement>();
+
+  return (
+    <div
+      ref={revealRef}
+      className="android-badge-card scroll-reveal"
+      onClick={() => onSelect(badge)}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          onSelect(badge);
+        }
+      }}
+    >
+      <div className="android-badge-image">
+        <img src={badge.image} alt={badge.title} loading="lazy" />
+      </div>
+
+      <div className="android-badge-details">
+        <h3>{badge.title}</h3>
+        <span>Google Android</span>
+      </div>
+
+      <div className="android-badge-view">View Badge</div>
+    </div>
+  );
+}
+
 function AndroidBadges() {
   const [showAll, setShowAll] = useState(false);
   const [selectedBadge, setSelectedBadge] = useState<Badge | null>(null);
+  const headerRevealRef = useScrollReveal<HTMLDivElement>();
+  const toggleRevealRef = useScrollReveal<HTMLDivElement>();
 
   // Google Android Development Badges
   const badges: Badge[] = [
@@ -148,8 +187,10 @@ function AndroidBadges() {
     <section className="android-badges-section">
 
       {/* Section Heading */}
-      <div className="android-badges-header">
-
+      <div
+        ref={headerRevealRef}
+        className="android-badges-header scroll-reveal"
+      >
 
         <h2>Google Android Development</h2>
 
@@ -164,40 +205,11 @@ function AndroidBadges() {
       <div className="android-badges-grid">
 
         {visibleBadges.map((badge) => (
-
-          <div
-            className="android-badge-card"
+          <AndroidBadgeCard
+            badge={badge}
+            onSelect={setSelectedBadge}
             key={badge.id}
-            onClick={() => setSelectedBadge(badge)}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                setSelectedBadge(badge);
-              }
-            }}
-          >
-
-            <div className="android-badge-image">
-              <img
-                src={badge.image}
-                alt={badge.title}
-                loading="lazy"
-              />
-            </div>
-
-            <div className="android-badge-details">
-              <h3>{badge.title}</h3>
-              <span>Google Android</span>
-            </div>
-
-            <div className="android-badge-view">
-              View Badge
-            </div>
-
-          </div>
-
+          />
         ))}
 
       </div>
@@ -205,7 +217,10 @@ function AndroidBadges() {
       {/* View More / Show Less */}
       {badges.length > 8 && (
 
-        <div className="android-badges-footer">
+        <div
+          ref={toggleRevealRef}
+          className="android-badges-footer scroll-reveal"
+        >
 
           <span
             className="android-badges-toggle"

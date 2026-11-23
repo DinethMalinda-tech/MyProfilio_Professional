@@ -1,13 +1,19 @@
 import { useState } from 'react';
 import './Navibar.css';
+import useScrollReveal from "../hooks/useScrollReveal";
 
 function Navibar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const revealRef = useScrollReveal<HTMLElement>();
 
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header id="navbar" className="main-header">
+    <header
+      id="navbar"
+      ref={revealRef}
+      className="main-header scroll-reveal"
+    >
       <div className="nav-wrapper">
         <div className="nav-logo">Mr.Malinda</div>
 
