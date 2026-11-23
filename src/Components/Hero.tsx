@@ -2,7 +2,7 @@ import "./Hero.css"
 
 function HeroSection() {
   return (
-    <section className="hero">
+    <section id="about" className="hero">
 
       {/* Animated background layers */}
       <div className="hero__bg">

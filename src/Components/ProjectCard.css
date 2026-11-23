@@ -1,0 +1,251 @@
+
+/* ===== PROJECT CARD ===== */
+
+.project-card {
+  flex: 0 1 calc((100% - 50px) / 3);
+  min-width: 0;
+  padding: 16px;
+  box-sizing: border-box;
+
+  background: #ffffff;
+  color: #1b2733;
+
+  border-radius: 16px;
+  border: 1px solid rgba(0, 166, 199, 0.2);
+
+  box-shadow:
+    0 5px 20px rgba(0, 120, 160, 0.08),
+    0 10px 35px rgba(0, 0, 0, 0.06),
+    0 0 30px rgba(0, 166, 199, 0.06);
+
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-7px);
+  border-color: #142b3b;
+
+  box-shadow:
+    0 0 12px rgba(0, 166, 199, 0.15),
+    0 10px 35px rgba(0, 166, 199, 0.12);
+}
+
+/* ===== CARD BUTTON ===== */
+
+.project-card__toggle {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* ===== IMAGE ===== */
+
+.project-card__image {
+  display: block;
+  width: 100%;
+  height: 220px;
+
+  object-fit: contain;
+  object-position: center;
+
+  border-radius: 12px;
+  transition: none;
+}
+
+/* ===== CARD CONTENT ===== */
+
+.project-card__content {
+  display: grid;
+  gap: 8px;
+  padding-top: 15px;
+  text-align: center;
+}
+
+.project-card__name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #142b3b;
+}
+
+.project-card__description {
+  color: #777777;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+/* ===== PROJECT LINK ===== */
+
+/* ===== PROJECT LINK ===== */
+
+.project-card__link {
+  display: inline-block;
+  margin: 12px 0 0;
+  padding: 0;
+
+  background: transparent;
+  border: none;
+  border-radius: 0;
+
+  color: #007bff;
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  text-decoration: underline;
+  text-underline-offset: 3px;
+
+  transition: color 0.2s ease;
+}
+
+.project-card__link:hover {
+  color: #142b3b;
+}
+
+/* ===== PROJECT MODAL ===== */
+
+.project-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+
+  background: rgba(15, 25, 45, 0.78);
+  backdrop-filter: blur(7px);
+  animation: projectFadeIn 0.3s ease;
+}
+
+.project-modal-content {
+  position: relative;
+
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 25px;
+
+  background: #ffffff;
+  border: 1px solid rgba(0, 166, 199, 0.3);
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  animation: projectScaleUp 0.3s ease;
+}
+
+.project-modal__image {
+  display: block;
+  width: 100%;
+  max-height: 65vh;
+  margin: auto;
+
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.project-modal__caption {
+  margin-top: 18px;
+  color: #333333;
+}
+
+.project-modal__caption h3 {
+  margin: 0 0 10px;
+  color: #142b3b;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.project-modal__caption p {
+  max-width: 600px;
+  margin: 0 auto;
+  color: #777777;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.project-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+
+  width: 38px;
+  height: 38px;
+
+  background: #ffffff;
+  border: 1px solid rgba(0, 166, 199, 0.25);
+  border-radius: 50%;
+  color: #142b3b;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.project-modal__close:hover {
+  background: #142b3b;
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+@keyframes projectFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes projectScaleUp {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ===== FOCUS ===== */
+
+.project-card__toggle:focus-visible,
+.project-card__link:focus-visible {
+  outline: 3px solid #007bff;
+  outline-offset: 3px;
+}
+
+/* ===== TABLET ===== */
+
+@media (max-width: 900px) {
+  .project-card {
+    flex-basis: calc((100% - 20px) / 2);
+  }
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 550px) {
+  .project-card {
+    flex-basis: 100%;
+  }
+
+  .project-card__image {
+    height: 200px;
+  }
+
+  .project-modal-content {
+    padding: 15px;
+  }
+}

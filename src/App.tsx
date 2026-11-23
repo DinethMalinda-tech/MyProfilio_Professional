@@ -5,6 +5,8 @@ import SectionTitle from "./Components/SectionTitle"
 import SkillsSection from "./Components/SkillsSection"
 import CertificateCard from "./Components/CertificateCard"
 import AndroidBadges from "./Components/AndroidBadges"
+import ProjectSection from "./Components/ProjectSection"
+import Footer from "./Components/Footer"
 
 
 function App() {
@@ -19,6 +21,10 @@ function App() {
       <SectionTitle title="My Qualifications"/>
       <CertificateCard/>
       <AndroidBadges/>
+      <SectionTitle title="My Projects" id="Projects"/>
+      <ProjectSection/>
+      <SectionTitle title="Contact Me" id="contact"/>
+      <Footer/>
       
     </div>
   )
